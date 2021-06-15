@@ -1,0 +1,44 @@
+---
+title: "EnrichR"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+setwd("~/Bioinfo/TFG/results/Enrichr")
+library(enrichR)
+
+genes <- scan('genelistBIP.txt', what=" ")
+genesbd <- scan('genelistBD1.txt', what=" ")
+
+dbs <- listEnrichrDbs()
+```
+
+```{r}
+dbs <- c("GO_Molecular_Function_2018", "GO_Cellular_Component_2018", "GO_Biological_Process_2018")
+enriched <- enrichr(genes, dbs)
+en <- enrichr(genesbd, dbs)
+```
+
+```{r}
+enriched$GO_Molecular_Function_2018
+enriched$GO_Cellular_Component_2018
+enriched$GO_Biological_Process_2018
+en$GO_Molecular_Function_2018
+en$GO_Cellular_Component_2018
+en$GO_Biological_Process_2018
+```
+
+```{r}
+mf <- enriched[["GO_Molecular_Function_2018"]]
+cc <- enriched[["GO_Cellular_Component_2018"]]
+bp <- enriched[["GO_Biological_Process_2018"]]
+write.table(mf, "GO_Molecular_Function_2018_BD1", sep="\t", row.names = FALSE, col.names = TRUE) 
+write.table(cc, "GO_Cellular_Component_2018_BD1", sep="\t", row.names = FALSE, col.names = TRUE) 
+write.table(bp, "GO_Biological_Process_2018_BD1", sep="\t", row.names = FALSE, col.names = TRUE)
+```
+
+

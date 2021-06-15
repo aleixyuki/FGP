@@ -1,0 +1,126 @@
+---
+title: "plots"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r message = FALSE, echo = TRUE}
+setwd("~/Bioinfo/TFG/results/plots")
+# install.packages("ggplot2")
+# install.packages("tidyr")
+# install.packages("viridis")
+# install.packages("ggrepel")
+# install.packages("RColorBrewer")
+# install.packages("dplyr")
+# install.packages("ggsignif")
+library(ggplot2)
+library(tidyr)
+library(viridis)
+library(ggrepel)
+library(RColorBrewer)
+library(dplyr)
+library(ggsignif)
+```
+
+```{r}
+gwasData <- read.table("~/Bioinfo/TFG/data/daner_PGC_BIP32b_mds7a_0416a", header = TRUE) 
+PascalData <- read.table("~/Bioinfo/TFG/results/Pascal/BIP_PASCAL_unfiltered.txt", header = FALSE)
+colnames(PascalData) <- c("chr", "start", "end", "strand", "gene_id", "gene_symbol", "numSnps", "pval", "Status")
+
+PascalData$chr <- gsub("chr([0-9]+)", "\\1", PascalData$chr)
+PascalData$chr <- as.numeric(PascalData$chr)
+class(PascalData$chr)
+head(PascalData)
+
+gwasData$pval <- gwasData$P
+```
+
+```{r}
+nCHRpascal <- length(unique(PascalData$chr))
+PascalData$BPcum <- NA
+sp <- 0
+nbpp <- c()
+for (i in unique(PascalData$chr)){
+  nbpp[i] <- max(PascalData[PascalData$chr == i,]$start)
+  PascalData[PascalData$chr == i,"BPcum"] <- PascalData[PascalData$chr == i,"start"] + sp
+  sp <- sp + nbpp[i]
+}
+
+
+nCHRgwas <- length(unique(gwasData$CHR))
+gwasData$BPcum <- NA
+s <- 0
+nbpg <- c()
+for (i in 1:22){
+  nbpg[i] <- max(gwasData[gwasData$CHR == i,]$BP)
+  gwasData[gwasData$CHR == i,"BPcum"] <- gwasData[gwasData$CHR == i,"BP"] + s
+  s <- s + nbpg[i]
+}
+```
+
+We want the centre position of each chromosome. This position we’ll use later to place the labels on the `x`-axis of the Manhattan plot neatly in the middle of each chromosome. In order to get this position, we'll pipe the `gwasData` dataframe into this `dplyr` function which we then ask to calculate the difference between the maximum and minimum cumulative base pair position for each chromosome and divide it by two to get the middle of each chromosome. 
+
+```{r}
+# Get chromosome center positions for x-axis
+axisdf_gwas <- gwasData %>%
+            group_by(CHR) %>%
+              summarize(center=(max(BPcum) + min(BPcum))/2)
+
+```
+
+```{r}
+# Bonferroni-corrected threshold
+sig <- 0.05/nrow(gwasData)
+bonf <- 0.05/nrow(PascalData)
+```
+
+```{r}
+colorpas <- c()
+for (i in PascalData$chr){
+  if (i %% 2 == 0){
+    colorpas <- c(colorpas, "orange4")
+  }else{
+    colorpas <- c(colorpas, "dodgerblue4")
+  }
+}
+PascalData$col <- colorpas
+```
+
+```{r}
+highlight_df <- PascalData %>% 
+             filter(pval <= bonf)
+
+genes <- scan('/home/aleix/Bioinfo/TFG/results/Enrichr/genelistBIP.txt', what=" ")
+genesbd <- PascalData[PascalData$gene_symbol %in% genes,]
+```
+
+```{r}
+ggplot(gwasData, aes(BPcum,-log10(pval))) + geom_point(color = "grey") +
+  geom_point(data = PascalData, aes(BPcum,-log10(pval), color = col)) +
+  geom_point(data = highlight_df, aes(BPcum,-log10(pval)), color = 'orange') +
+  geom_point(data = genesbd, aes(BPcum,-log10(pval)), color = 'red') +
+  scale_x_continuous(label = axisdf_gwas$CHR, breaks = axisdf_gwas$center, expand = c(0, 0))+ 
+  xlab("Chromosome") + 
+  geom_hline(yintercept = -log10(bonf), linetype = "dashed") + 
+  scale_color_manual(values = c("red4", "dodgerblue4"), guide = FALSE) +
+  scale_y_continuous(expand = c(0, 0) ) +  
+  theme_bw() + 
+  theme(panel.border = element_blank(),
+      panel.grid.major.x = element_blank(),
+      panel.grid.minor.x = element_blank()
+    ) +
+  geom_label_repel( data=highlight_df, aes(label=gene_symbol), size=2, max.overlaps = Inf)
+
+#ggsave("~/Bioinfo/TFG/results/plots/BD1_gwas.png", height = 6, width = 12)
+```
+
+
+
+
+
+
+
+
