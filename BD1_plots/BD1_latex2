@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage{color, colortbl}
+\definecolor{Gray}{gray}{0.9}
+\usepackage{longtable}
+\usepackage[a4paper,margin=2cm]{geometry}
+\begin{document}
+\pagenumbering{gobble} 
+\setcounter{table}{1}
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{lccccc}
+%\begin{footnotesize}
+\hline
+Gene & Chromosome & Start & End & \# SNPs & p-value \\ \hline
+\rowcolor{Gray}
+\textit{TRANK1}	 & 	3	 & 	36868307	 & 	36986548	 & 	359	 & 	$1.37 \times 10^{-7}$\\
+\textit{ITIH1}	 & 	3	 & 	52811601	 & 	52826084	 & 	173	 & 	$2.40 \times 10^{-7}$\\
+\rowcolor{Gray}
+\textit{ITIH3}	 & 	3	 & 	52828783	 & 	52843025	 & 	173	 & 	$7.71 \times 10^{-8}$\\
+\textit{ITIH4}	 & 	3	 & 	52847005	 & 	52864717	 & 	188	 & 	$4.41 \times 10^{-8}$\\
+\rowcolor{Gray}
+\textit{MUSTN1}	 & 	3	 & 	52863875	 & 	52869318	 & 	185	 & 	$5.62 \times 10^{-8}$\\
+\textit{TMEM110-MUSTN1}	 & 	3	 & 	52867130	 & 	52931597	 & 	272	 & 	$6.56 \times 10^{-8}$\\
+\rowcolor{Gray}
+\textit{TMEM110}	 & 	3	 & 	52870771	 & 	52931597	 & 	267	 & 	$7.06 \times 10^{-8}$\\
+\textit{SFMBT1}	 & 	3	 & 	52937582	 & 	53080089	 & 	460	 & 	$4.38 \times 10^{-7}$\\
+\rowcolor{Gray}
+\textit{RPS6KA2}	 & 	6	 & 	166822853	 & 	167275771	 & 	1449	 & 	$9.40 \times 10^{-7}$\\
+\textit{MAD1L1}	 & 	7	 & 	1855427	 & 	2272583	 & 	1279	 & 	$4.63 \times 10^{-7}$\\
+\rowcolor{Gray}
+\textit{MYRF}	 & 	11	 & 	61520120	 & 	61555989	 & 	196	 & 	$6.06 \times 10^{-8}$\\
+\textbf{\textit{DKFZP434K028}}	 & 	11	 & 	61521500	 & 	61525136	 & 	154	 & 	$1.98 \times 10^{-6}$\\
+\rowcolor{Gray}
+\textit{TMEM258}	 & 	11	 & 	61556601	 & 	61560085	 & 	143	 & 	$6.30 \times 10^{-8}$\\
+\textbf{\textit{MIR611}}	 & 	11	 & 	61559966	 & 	61560033	 & 	134	 & 	$7.39 \times 10^{-8}$\\
+\rowcolor{Gray}
+\textit{FEN1}	 & 	11	 & 	61560108	 & 	61564714	 & 	140	 & 	$8.29 \times 10^{-8}$\\
+\textit{FADS1}	 & 	11	 & 	61567096	 & 	61584529	 & 	183	 & 	$2.11 \times 10^{-7}$\\
+\rowcolor{Gray}
+\textbf{\textit{MIR1908}}	 & 	11	 & 	61582632	 & 	61582712	 & 	148	 & 	$5.55 \times 10^{-7}$\\
+\textit{GAL3ST3}	 & 	11	 & 	65808235	 & 	65816651	 & 	171	 & 	$4.46 \times 10^{-7}$\\
+\rowcolor{Gray}
+\textit{SF3B2}	 & 	11	 & 	65819815	 & 	65836382	 & 	176	 & 	$2.49 \times 10^{-7}$\\
+\textit{PACS1}	 & 	11	 & 	65837823	 & 	66012218	 & 	360	 & 	$1.95 \times 10^{-7}$\\
+\rowcolor{Gray}
+\textit{KLC2}	 & 	11	 & 	66024764	 & 	66035332	 & 	143	 & 	$1.11 \times 10^{-6}$\\
+\textit{RAB1B}	 & 	11	 & 	66036055	 & 	66044963	 & 	141	 & 	$1.32 \times 10^{-6}$\\
+\rowcolor{Gray}
+\textit{CNIH2}	 & 	11	 & 	66045671	 & 	66051685	 & 	136	 & 	$1.65 \times 10^{-6}$\\
+\textit{YIF1A}	 & 	11	 & 	66052050	 & 	66056638	 & 	141	 & 	$1.56 \times 10^{-6}$\\
+\rowcolor{Gray}
+\textit{CACNA1C}	 & 	12	 & 	2162415	 & 	2807115	 & 	1298	 & 	$3.11 \times 10^{-7}$\\
+\textbf{\textit{CACNA1C-AS4}}	 & 	12	 & 	2329702	 & 	2332647	 & 	141	 & 	$3.91 \times 10^{-7}$\\
+\rowcolor{Gray}
+\textbf{\textit{CACNA1C-IT3}}	 & 	12	 & 	2378941	 & 	2397911	 & 	124	 & 	$6.26 \times 10^{-8}$\\
+\textit{KMT2D}	 & 	12	 & 	49412757	 & 	49449107	 & 	81	 & 	$9.13 \times 10^{-7}$\\
+\rowcolor{Gray}
+\textit{RHEBL1}	 & 	12	 & 	49458467	 & 	49463775	 & 	65	 & 	$2.26 \times 10^{-6}$\\
+\textit{STARD9}	 & 	15	 & 	42867856	 & 	43013196	 & 	229	 & 	$8.86 \times 10^{-8}$\\
+\rowcolor{Gray}
+\textit{CDAN1}	 & 	15	 & 	43015759	 & 	43029417	 & 	111	 & 	$1.34 \times 10^{-6}$\\
+\textit{TTBK2}	 & 	15	 & 	43036541	 & 	43213007	 & 	220	 & 	$1.28 \times 10^{-6}$\\
+\rowcolor{Gray}
+\textbf{\textit{LOC100505679}}	 & 	15	 & 	84841241	 & 	84850985	 & 	85	 & 	$2.15 \times 10^{-6}$\\
+\textbf{\textit{LOC642423}}	 & 	15	 & 	84868829	 & 	85748518	 & 	1817	 & 	$1.13 \times 10^{-6}$\\
+\rowcolor{Gray}
+\textbf{\textit{GOLGA6L5}}	 & 	15	 & 	85047737	 & 	85060078	 & 	103	 & 	$7.32 \times 10^{-7}$\\
+\textbf{\textit{UBE2Q2P1}}	 & 	15	 & 	85070426	 & 	85114026	 & 	189	 & 	$2.68 \times 10^{-7}$\\
+\rowcolor{Gray}
+\textbf{\textit{LINC00933}}	 & 	15	 & 	85113879	 & 	85123412	 & 	194	 & 	$2.06 \times 10^{-7}$\\
+\textit{ZSCAN2}	 & 	15	 & 	85144248	 & 	85166947	 & 	220	 & 	$2.72 \times 10^{-7}$\\
+\rowcolor{Gray}
+\textbf{\textit{SCAND2P}}	 & 	15	 & 	85174690	 & 	85185694	 & 	180	 & 	$1.59 \times 10^{-6}$\\
+\textit{GSDMB}	 & 	17	 & 	38060847	 & 	38074903	 & 	239	 & 	$1.51 \times 10^{-6}$\\
+\rowcolor{Gray}
+\textit{ORMDL3}	 & 	17	 & 	38077295	 & 	38083884	 & 	251	 & 	$1.24 \times 10^{-6}$\\
+\textit{LRRC3C}	 & 	17	 & 	38097726	 & 	38100987	 & 	271	 & 	$6.61 \times 10^{-7}$\\
+\rowcolor{Gray}
+\textit{GSDMA}	 & 	17	 & 	38119225	 & 	38134019	 & 	345	 & 	$9.66 \times 10^{-7}$\\
+\textit{PSMD3}	 & 	17	 & 	38137020	 & 	38154213	 & 	344	 & 	$1.58 \times 10^{-6}$\\
+\rowcolor{Gray}
+\textit{NCAN}	 & 	19	 & 	19322781	 & 	19363061	 & 	237	 & 	$8.11 \times 10^{-7}$\\
+\textit{HAPLN4}	 & 	19	 & 	19366451	 & 	19384074	 & 	153	 & 	$1.36 \times 10^{-6}$\\
+\rowcolor{Gray}
+\textit{TM6SF2}	 & 	19	 & 	19375173	 & 	19384074	 & 	147	 & 	$1.65 \times 10^{-6}$\\
+\textit{PBX4}	 & 	19	 & 	19672515	 & 	19729725	 & 	186	 & 	$1.05 \times 10^{-6}$\\
+\rowcolor{Gray}
+\textit{STK4}	 & 	20	 & 	43595119	 & 	43708593	 & 	364	 & 	$1.21 \times 10^{-7}$\\
+\textit{KCNS1}	 & 	20	 & 	43720949	 & 	43729753	 & 	201	 & 	$2.98 \times 10^{-9}$\\
+\rowcolor{Gray}
+\textit{WFDC5}	 & 	20	 & 	43738092	 & 	43743813	 & 	201	 & 	$2.31 \times 10^{-8}$\\
+\textit{WFDC12}	 & 	20	 & 	43752066	 & 	43753106	 & 	197	 & 	$3.22 \times 10^{-7}$\\
+\end{tabular}
+  \caption[Resulting associated genes using PASCAL]{%
+    \label{tbl:bip}\textbf{Resulting associated genes using PASCAL.} These are the significant genes for BD1 with a p-value lower than the Bonferroni correction (p-value $< 2.28 \times 10^{-8}$) sorted by chromosome. The genes in bold are the novel genes found with PASCAL.
+  }%caption
+\end{center}
+\end{table}
+\end{document}
